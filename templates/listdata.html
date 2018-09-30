@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>visit</h1>
+    <h3>总访问次数：{{Userip.count}}</h3>
+    <table class="table table-bordered">
+        {% for i in DayNumber%}
+        <tr>
+            <td>{{i.day}}</td>
+            <td>{{i.count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table class="table table-bordered">
+        {% for i in Userip%}
+        <tr>
+            <td>{{i.ip}}</td>
+            <td>{{i.count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h1>Banner:</h1>
+    <table class="table table-bordered">
+        {% for i in banner %}
+        <tr>
+        <td>{{i.content}}</td>
+            <td>{{i.banner_url}}</td>
+        <td><a ><img  src="{{i.images}}" height="100" width="200"></a></td>
+            <td>
+
+                <form method="post" action="/listdata/" enctype="multipart/form-data">
+                    <input type="file" name="testimg">
+                    <input type="text" name="id" value={{i.id}}>
+                    <input type="submit" value="上传">
+                </form>
+
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+    <br>
+    <h1>文章列表：</h1>
+    <table class="table table-bordered">
+        {% for i in articleall %}
+        <tr>
+        <td>{{i.Article_title}}</td>
+        <td><a ><img  src="{{i.Article_images}}" height="100" width="200"></a></td>
+            <td>
+
+                <form method="post" action="/listdata/" enctype="multipart/form-data">
+                    <input type="file" name="testimg">
+                    <input type="text" name="id" value={{i.id}}>
+                    <input type="submit" value="上传">
+                </form>
+
+            </td>
+            <td>
+             <a href="/listdata/?del={{i.id}}">删除</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>

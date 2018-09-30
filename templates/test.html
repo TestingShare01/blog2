@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>#这里设置title可替换，就用block块
+    <link rel="stylesheet" href="/static/commons.css" />
+    <style>
+        .pg-header{
+            height: 50px;
+            background-color: seashell;
+            color: green;
+        }
+    </style>
+    {% block css %} {% endblock %} #这里设置css替换块
+</head>
+<body>
+    <div class="pg-header">小男孩管理</div>
+     {% block content %} {% endblock %}#这里设置内容替换块
+    <div>
+        <a>asdf</a>
+        <a id="">asdf</a>
+        <a>asdf</a>
+        <a>asdf</a>
+        <a>asdf</a>
+    </div>
+    <iframe src="/"></iframe>
+</body>
+</html>
